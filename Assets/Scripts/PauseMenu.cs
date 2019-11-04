@@ -11,9 +11,9 @@ public class PauseMenu : MonoBehaviour
         Animator animator = PauseMenuUI.GetComponent<Animator>();
         if (animator != null)
         {
-            bool isPaused = animator.GetBool("GamePaused");
+            bool isPaused = animator.GetBool("Open");
 
-            animator.SetBool("GamePaused", !isPaused);
+            animator.SetBool("Open", !isPaused);
         }
     }
 

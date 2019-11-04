@@ -5,11 +5,21 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public int playerHealth = 1;
+    public GameObject GameOverMenuUI;
 
     void GameOver()
     {
         Debug.Log("Game Over1");
         FindObjectOfType<TouchToRotate>().DeathParticle();
+
+        Animator animator = GameOverMenuUI.GetComponent<Animator>();
+        if (animator != null)
+        {
+            bool isPaused = animator.GetBool("Open");
+
+            animator.SetBool("Open", !isPaused);
+        }
+
     }
 
     public void LoseLife()
