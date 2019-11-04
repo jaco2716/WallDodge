@@ -15,6 +15,7 @@ public class WallSpawner : MonoBehaviour
     private float yCordStraight = 6;
     private float xCordSkew = 3.4f;
     private float yCordSkew = 8;
+    private float wallLength = 6;
 
     // Start is called before the first frame update
     void Start()
@@ -22,14 +23,14 @@ public class WallSpawner : MonoBehaviour
 
         wallAtributes = new List<WallAtributes>()
         {
-            new WallAtributes(1, 2, 0, true, true, 1),
-            new WallAtributes(3, 2, 0, true, true, 2),
-            new WallAtributes(5, 2, 0, true, true, 3),
-            new WallAtributes(7, 2, 0, true, true, 4),
-            new WallAtributes(9, 2, 0, true, true, 5),
-            new WallAtributes(11, 2, 0, true, true, 6),
-            new WallAtributes(13, 2, 0, true, true, 7),
-            new WallAtributes(15, 2, 0, true, true, 8)
+            new WallAtributes(1, 2, 0, true, true, 1, 0.3f),
+            new WallAtributes(3, 2, 0, true, true, 2, 0.3f),
+            new WallAtributes(5, 2, 0, true, true, 3, 0.3f),
+            new WallAtributes(7, 2, 0, true, true, 4, 0.3f),
+            new WallAtributes(9, 2, 0, true, true, 5, 0.3f),
+            new WallAtributes(11, 2, 0, true, true, 6, 0.3f),
+            new WallAtributes(13, 2, 0, true, true, 7, 0.3f),
+            new WallAtributes(15, 2, 0, true, true, 8, 0.3f)
         };
     }
 
@@ -72,6 +73,7 @@ public class WallSpawner : MonoBehaviour
             GameObject wall1 = Instantiate(wall, new Vector3(-xCordStraight, yCordStraight), Quaternion.AngleAxis(90, Vector3.forward));
             wall1.GetComponent<Rigidbody2D>().velocity = Vector2.down * wallAtributes[listItem].Speed;
             wall1.GetComponent<Rigidbody2D>().angularVelocity = wallAtributes[listItem].RotateSpeed;
+            wall1.GetComponent<Rigidbody2D>().transform.localScale = new Vector3(wallAtributes[listItem].Thickness, wallLength);
         }
 
         if (wallAtributes[listItem].SpawnRight)
@@ -79,6 +81,7 @@ public class WallSpawner : MonoBehaviour
             GameObject wall2 = Instantiate(wall, new Vector3(xCordStraight, yCordStraight), Quaternion.AngleAxis(90, Vector3.forward));
             wall2.GetComponent<Rigidbody2D>().velocity = Vector2.down * wallAtributes[listItem].Speed;
             wall2.GetComponent<Rigidbody2D>().angularVelocity = -wallAtributes[listItem].RotateSpeed;
+            wall2.GetComponent<Rigidbody2D>().transform.localScale = new Vector3(wallAtributes[listItem].Thickness, wallLength);
         }
     }
 
@@ -89,6 +92,7 @@ public class WallSpawner : MonoBehaviour
             GameObject wall1 = Instantiate(wall, new Vector3(yCordStraight, xCordStraight), Quaternion.identity);
             wall1.GetComponent<Rigidbody2D>().velocity = Vector2.left * wallAtributes[listItem].Speed;
             wall1.GetComponent<Rigidbody2D>().angularVelocity = wallAtributes[listItem].RotateSpeed;
+            wall1.GetComponent<Rigidbody2D>().transform.localScale = new Vector3(wallAtributes[listItem].Thickness, wallLength);
         }
 
         if (wallAtributes[listItem].SpawnRight)
@@ -96,6 +100,7 @@ public class WallSpawner : MonoBehaviour
             GameObject wall2 = Instantiate(wall, new Vector3(yCordStraight, -xCordStraight), Quaternion.identity);
             wall2.GetComponent<Rigidbody2D>().velocity = Vector2.left * wallAtributes[listItem].Speed;
             wall2.GetComponent<Rigidbody2D>().angularVelocity = -wallAtributes[listItem].RotateSpeed;
+            wall2.GetComponent<Rigidbody2D>().transform.localScale = new Vector3(wallAtributes[listItem].Thickness, wallLength);
         }
     }
 
@@ -106,6 +111,7 @@ public class WallSpawner : MonoBehaviour
             GameObject wall1 = Instantiate(wall, new Vector3(-xCordStraight, -yCordStraight), Quaternion.AngleAxis(90, Vector3.forward));
             wall1.GetComponent<Rigidbody2D>().velocity = Vector2.up * wallAtributes[listItem].Speed;
             wall1.GetComponent<Rigidbody2D>().angularVelocity = wallAtributes[listItem].RotateSpeed;
+            wall1.GetComponent<Rigidbody2D>().transform.localScale = new Vector3(wallAtributes[listItem].Thickness, wallLength);
         }
 
         if (wallAtributes[listItem].SpawnRight)
@@ -113,6 +119,7 @@ public class WallSpawner : MonoBehaviour
             GameObject wall2 = Instantiate(wall, new Vector3(xCordStraight, -yCordStraight), Quaternion.AngleAxis(90, Vector3.forward));
             wall2.GetComponent<Rigidbody2D>().velocity = Vector2.up * wallAtributes[listItem].Speed;
             wall2.GetComponent<Rigidbody2D>().angularVelocity = -wallAtributes[listItem].RotateSpeed;
+            wall2.GetComponent<Rigidbody2D>().transform.localScale = new Vector3(wallAtributes[listItem].Thickness, wallLength);
         }
     }
 
@@ -123,6 +130,7 @@ public class WallSpawner : MonoBehaviour
             GameObject wall1 = Instantiate(wall, new Vector3(-yCordStraight, xCordStraight), Quaternion.identity);
             wall1.GetComponent<Rigidbody2D>().velocity = Vector2.right * wallAtributes[listItem].Speed;
             wall1.GetComponent<Rigidbody2D>().angularVelocity = wallAtributes[listItem].RotateSpeed;
+            wall1.GetComponent<Rigidbody2D>().transform.localScale = new Vector3(wallAtributes[listItem].Thickness, wallLength);
         }
 
         if (wallAtributes[listItem].SpawnRight)
@@ -130,6 +138,7 @@ public class WallSpawner : MonoBehaviour
             GameObject wall2 = Instantiate(wall, new Vector3(-yCordStraight, -xCordStraight), Quaternion.identity);
             wall2.GetComponent<Rigidbody2D>().velocity = Vector2.right * wallAtributes[listItem].Speed;
             wall2.GetComponent<Rigidbody2D>().angularVelocity = -wallAtributes[listItem].RotateSpeed;
+            wall2.GetComponent<Rigidbody2D>().transform.localScale = new Vector3(wallAtributes[listItem].Thickness, wallLength);
         }
     }
 
@@ -140,6 +149,7 @@ public class WallSpawner : MonoBehaviour
             GameObject wall1 = Instantiate(wall, new Vector3(xCordSkew, yCordSkew), Quaternion.AngleAxis(45, Vector3.forward));
             wall1.GetComponent<Rigidbody2D>().velocity = new Vector2(-1, -1) * wallAtributes[listItem].Speed;
             wall1.GetComponent<Rigidbody2D>().angularVelocity = wallAtributes[listItem].RotateSpeed;
+            wall1.GetComponent<Rigidbody2D>().transform.localScale = new Vector3(wallAtributes[listItem].Thickness, wallLength);
         }
 
         if (wallAtributes[listItem].SpawnRight)
@@ -147,6 +157,7 @@ public class WallSpawner : MonoBehaviour
             GameObject wall2 = Instantiate(wall, new Vector3(yCordSkew, xCordSkew), Quaternion.AngleAxis(45, Vector3.forward));
             wall2.GetComponent<Rigidbody2D>().velocity = new Vector2(-1,-1) * wallAtributes[listItem].Speed;
             wall2.GetComponent<Rigidbody2D>().angularVelocity = -wallAtributes[listItem].RotateSpeed;
+            wall2.GetComponent<Rigidbody2D>().transform.localScale = new Vector3(wallAtributes[listItem].Thickness, wallLength);
         }
     }
 
@@ -157,6 +168,7 @@ public class WallSpawner : MonoBehaviour
             GameObject wall1 = Instantiate(wall, new Vector3(xCordSkew, -yCordSkew), Quaternion.AngleAxis(-45, Vector3.forward));
             wall1.GetComponent<Rigidbody2D>().velocity = (Vector2.up + Vector2.left) * wallAtributes[listItem].Speed;
             wall1.GetComponent<Rigidbody2D>().angularVelocity = wallAtributes[listItem].RotateSpeed;
+            wall1.GetComponent<Rigidbody2D>().transform.localScale = new Vector3(wallAtributes[listItem].Thickness, wallLength);
         }
 
         if (wallAtributes[listItem].SpawnRight)
@@ -164,6 +176,7 @@ public class WallSpawner : MonoBehaviour
             GameObject wall2 = Instantiate(wall, new Vector3(yCordSkew, -xCordSkew), Quaternion.AngleAxis(-45, Vector3.forward));
             wall2.GetComponent<Rigidbody2D>().velocity = (Vector2.up + Vector2.left) * wallAtributes[listItem].Speed;
             wall2.GetComponent<Rigidbody2D>().angularVelocity = -wallAtributes[listItem].RotateSpeed;
+            wall2.GetComponent<Rigidbody2D>().transform.localScale = new Vector3(wallAtributes[listItem].Thickness, wallLength);
         }
     }
 
@@ -174,6 +187,7 @@ public class WallSpawner : MonoBehaviour
             GameObject wall1 = Instantiate(wall, new Vector3(-xCordSkew, -yCordSkew), Quaternion.AngleAxis(45, Vector3.forward));
             wall1.GetComponent<Rigidbody2D>().velocity = (Vector2.up + Vector2.right) * wallAtributes[listItem].Speed;
             wall1.GetComponent<Rigidbody2D>().angularVelocity = wallAtributes[listItem].RotateSpeed;
+            wall1.GetComponent<Rigidbody2D>().transform.localScale = new Vector3(wallAtributes[listItem].Thickness, wallLength);
         }
 
         if (wallAtributes[listItem].SpawnRight)
@@ -181,6 +195,7 @@ public class WallSpawner : MonoBehaviour
             GameObject wall2 = Instantiate(wall, new Vector3(-yCordSkew, -xCordSkew), Quaternion.AngleAxis(45, Vector3.forward));
             wall2.GetComponent<Rigidbody2D>().velocity = (Vector2.up + Vector2.right) * wallAtributes[listItem].Speed;
             wall2.GetComponent<Rigidbody2D>().angularVelocity = -wallAtributes[listItem].RotateSpeed;
+            wall2.GetComponent<Rigidbody2D>().transform.localScale = new Vector3(wallAtributes[listItem].Thickness, wallLength);
         }
     }
 
@@ -191,6 +206,7 @@ public class WallSpawner : MonoBehaviour
             GameObject wall1 = Instantiate(wall, new Vector3(-xCordSkew, yCordSkew), Quaternion.AngleAxis(-45, Vector3.forward));
             wall1.GetComponent<Rigidbody2D>().velocity = (Vector2.down + Vector2.right) * wallAtributes[listItem].Speed;
             wall1.GetComponent<Rigidbody2D>().angularVelocity = wallAtributes[listItem].RotateSpeed;
+            wall1.GetComponent<Rigidbody2D>().transform.localScale = new Vector3(wallAtributes[listItem].Thickness, wallLength);
         }
 
         if (wallAtributes[listItem].SpawnRight)
@@ -198,6 +214,7 @@ public class WallSpawner : MonoBehaviour
             GameObject wall2 = Instantiate(wall, new Vector3(-yCordSkew, xCordSkew), Quaternion.AngleAxis(-45, Vector3.forward));
             wall2.GetComponent<Rigidbody2D>().velocity = (Vector2.down + Vector2.right) * wallAtributes[listItem].Speed;
             wall2.GetComponent<Rigidbody2D>().angularVelocity = -wallAtributes[listItem].RotateSpeed;
+            wall2.GetComponent<Rigidbody2D>().transform.localScale = new Vector3(wallAtributes[listItem].Thickness, wallLength);
         }
     }
 
