@@ -12,6 +12,13 @@ public class GameManager : MonoBehaviour
         Debug.Log("Game Over1");
         FindObjectOfType<TouchToRotate>().DeathParticle();
 
+        StartCoroutine(WaitGameMenu());
+
+    }
+
+    IEnumerator WaitGameMenu()
+    {
+        yield return new WaitForSeconds(1);
         Animator animator = GameOverMenuUI.GetComponent<Animator>();
         if (animator != null)
         {
@@ -19,7 +26,6 @@ public class GameManager : MonoBehaviour
 
             animator.SetBool("Open", !isPaused);
         }
-
     }
 
     public void LoseLife()

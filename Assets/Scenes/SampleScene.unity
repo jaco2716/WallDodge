@@ -951,6 +951,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHealth: 1
+  GameOverMenuUI: {fileID: 335440748}
 --- !u!4 &373583513
 Transform:
   m_ObjectHideFlags: 0
