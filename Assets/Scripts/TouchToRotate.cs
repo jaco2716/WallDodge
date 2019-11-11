@@ -44,12 +44,16 @@ public class TouchToRotate : MonoBehaviour
             {
                 touchActive = true;
                 float xTouchPos = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position).x;
+                float yTouchPos = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position).y;
 
-                if(xTouchPos < 0) angle += 45;
-                else if (xTouchPos > 0) angle += 90;
+                if (yTouchPos > -3.7)
+                {
+                    if (xTouchPos < 0) angle += 45;
+                    else if (xTouchPos > 0) angle += 90;
 
-                if(!gameOver) rb2d.MoveRotation(angle);
-                
+                    if(!gameOver) rb2d.MoveRotation(angle);
+                    
+                }
 //                transform.rotation = Quaternion.AngleAxis(angle, Vector3.back);
 
                 if (angle > 370) angle = 45;
